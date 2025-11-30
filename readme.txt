@@ -16,8 +16,7 @@ cd C:\(...)\src
 
 # -------------------------------
 # Launch:
-c:
-cd C:\(...)\src
+c:cd C:\(...)\src
 .venv\Scripts\activate.bat
 spyder
 
