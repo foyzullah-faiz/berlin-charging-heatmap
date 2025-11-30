@@ -47,7 +47,7 @@ To quantify the "need" for infrastructure, we calculate a **Demand Index** for e
 2.  **Aggregate:** Count total charging stations per PLZ.
 3.  **Calculate:** Apply the demand formula:
 
-$$\text{Demand Index} = \frac{\text{Population}}{\text{Station\_Count} + 1}$$
+$$\text{Demand Index} = \frac{\text{Population}}{\text{Station Count} + 1}$$
 
 > **Note:** We add `+1` to the denominator to prevent "Division by Zero" errors in districts that have 0 stations. This effectively models the load if *one* station were to be built there.
 
