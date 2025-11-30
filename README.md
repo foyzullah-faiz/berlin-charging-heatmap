@@ -35,6 +35,11 @@ The analysis relies on specific metrics calculated in the final DataFrame (`gdf_
 
 ## 3. Methodology
 
+### **Data Processing**
+Here is a preview of the processed data merging population, charging stations, and the calculated Demand Index:
+
+![Data Preview Table](data_preview.png)
+
 ### **The Algorithm**
 To quantify the "need" for infrastructure, we calculate a **Demand Index** for every Postal Code using the following logic:
 
@@ -42,7 +47,7 @@ To quantify the "need" for infrastructure, we calculate a **Demand Index** for e
 2.  **Aggregate:** Count total charging stations per PLZ.
 3.  **Calculate:** Apply the demand formula:
 
-$$\text{Demand Index} = \frac{\text{Population}}{\text{Station Count} + 1}$$
+$$\text{Demand Index} = \frac{\text{Population}}{\text{Station\_Count} + 1}$$
 
 > **Note:** We add `+1` to the denominator to prevent "Division by Zero" errors in districts that have 0 stations. This effectively models the load if *one* station were to be built there.
 
@@ -51,6 +56,10 @@ $$\text{Demand Index} = \frac{\text{Population}}{\text{Station Count} + 1}$$
 ## 4. Analysis of Results (Task 7)
 
 The geospatial analysis reveals a significant mismatch between population centers and infrastructure distribution.
+
+### **Visual Result**
+![Berlin Charging Heatmap Preview](map_preview.png)
+*(Figure 1: 3D Visualization of Demand Index. Red bars indicate high pressure on infrastructure.)*
 
 ### **A. Identified "Hotspots" (High Demand)**
 The visualization shows that the highest demand is **not** in the city center (Mitte), but in the **outer residential rings**.
