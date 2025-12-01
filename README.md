@@ -1,7 +1,7 @@
 # ⚡ Berlin Electric Charging Demand Heatmap
 
 ## 1. Project Overview
-This Data Science web application visualizes the demand for electric vehicle (EV) charging infrastructure in Berlin. By correlating population density data with the federal registry of charging stations, the project identifies "blind spots"—districts with high population density but insufficient charging infrastructure.
+This Data Science web application visualizes the demand for electric vehicle (EV) charging infrastructure in Berlin. It follows a modular structure to clean, merge, and visualize data regarding population density and charging station distribution.
 
 * **Live Deployment:** [https://berlin-charging-faiz.streamlit.app](https://berlin-charging-faiz.streamlit.app)
 * **GitHub Repository:** [https://github.com/foyzullah-faiz/berlin-charging-heatmap](https://github.com/foyzullah-faiz/berlin-charging-heatmap)
@@ -10,12 +10,12 @@ This Data Science web application visualizes the demand for electric vehicle (EV
 
 ## 2. Technical Structure
 
-The project follows a modular Python structure designed for Streamlit.
+The project uses Python and Streamlit, integrating specific processing methods provided in the course material (`core/methods.py`).
 
-* **`main.py`:** The entry point. It loads data, calls the processing methods, and renders the visualizations.
-* **`core/methods.py`:** Contains the reusable logic for cleaning data, converting types, and generating the Folium map layers.
+* **`main.py`:** The entry point. It handles data loading, type conversion (ETL), and calls the visualization methods.
+* **`core/methods.py`:** Contains the logic for filtering Berlin data, generating geometry, and rendering the interactive Folium map.
 * **`config.py`:** Manages file paths and global constants.
-* **`datasets/`:** Raw CSV data (Population, Charging Registry, Geodata).
+* **`datasets/`:** Raw CSV data.
 
 ---
 
@@ -36,38 +36,26 @@ Here is a preview of the processed data merging population, charging stations, a
 
 ---
 
-## 4. Visualizations
+## 4. Visualizations (Task 3)
 
-The application supports two different geospatial visualization approaches.
+The application generates an interactive **2D Heatmap (Folium)** that allows users to toggle between two key layers.
 
-### **Approach A: 2D Interactive Heatmap (Folium)**
-*Required for Task 3.*
-This view allows users to toggle layers to compare population density vs. charging station density directly.
-
-**Layer 1: Residents (Population Density)**
-*Yellow/Red intensity indicates where people live.*
+### **Layer A: Population Density**
+*Visualizes where potential EV owners live.*
 ![Residents Heatmap](Residents.png)
 
-**Layer 2: Charging Stations (Infrastructure Supply)**
-*Yellow/Red intensity indicates where chargers are located.*
+### **Layer B: Charging Infrastructure**
+*Visualizes where the current supply of chargers is located.*
 ![Stations Heatmap](Stations.png)
-
-### **Approach B: 3D Geospatial Column Map (PyDeck)**
-*Advanced Visualization.*
-This view renders the **Demand Index** as physical height.
-* **Red Towers:** Indicate areas with high pressure on infrastructure (High Population / Low Stations).
-* **Height:** Proportional to the Demand Index.
-
-![3D PyDeck Map Preview](map_preview.png)
 
 ---
 
 ## 5. Analysis of Results (Task 7)
 
-The geospatial analysis reveals a significant mismatch between population centers and infrastructure distribution.
+By comparing the population density against the station count, we identified critical gaps in the infrastructure.
 
 ### **Identified "Hotspots" (High Demand)**
-The visualization shows that the highest demand is **not** in the city center (Mitte), but in the **outer residential rings**.
+The geospatial analysis reveals a significant mismatch. The highest demand is **not** in the city center (Mitte), but in the **outer residential rings**.
 
 1.  **Top Priority:** **PLZ 12279 (Marienfelde)**.
     * **Population:** 16,381
@@ -78,9 +66,10 @@ The visualization shows that the highest demand is **not** in the city center (M
     * **Stations:** 1
     * **Interpretation:** Extremely high pressure on grid; urgent need for expansion.
 
-### **Geospatial Patterns**
-* **The "Donut" Effect:** The map displays a ring of high demand surrounding the city center. These areas (PLZ 12xxx, 13xxx) typically feature dense housing complexes (*Plattenbauten*) where residents lack private garages.
-* **Low Demand Areas:** Wealthier suburbs like **Zehlendorf** show low demand indices. Despite having fewer stations, the need is lower because residents likely own single-family homes with private wall-boxes.
+### **Visualizing the Gap**
+*(Figure: 3D Analysis showing the Demand Index as physical height. Tall red bars indicate the charging deserts identified above.)*
+
+![3D Demand Analysis](map_preview.png)
 
 ---
 
