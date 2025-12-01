@@ -50,7 +50,7 @@ This view allows users to toggle layers to compare population density vs. chargi
 
 **Layer 2: Charging Stations (Infrastructure Supply)**
 *Yellow/Red intensity indicates where chargers are located.*
-![Stations Heatmap](Chargin_Stations.png)
+![Stations Heatmap](Stations.png)
 
 ### **Approach B: 3D Geospatial Column Map (PyDeck)**
 *Advanced Visualization.*
