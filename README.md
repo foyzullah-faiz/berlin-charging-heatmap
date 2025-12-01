@@ -3,8 +3,8 @@
 ## 1. Project Overview
 This Data Science web application visualizes the demand for electric vehicle (EV) charging infrastructure in Berlin. By correlating population density data with the federal registry of charging stations, the project identifies "blind spots"—districts with high population density but insufficient charging infrastructure.
 
-* **Live Deployment:** [INSERT YOUR STREAMLIT APP LINK HERE]
-* **GitHub Repository:** [INSERT YOUR GITHUB LINK HERE]
+* **Live Deployment:** [https://berlin-charging-faiz.streamlit.app/]
+* **GitHub Repository:** [https://github.com/foyzullah-faiz/berlin-charging-heatmap/tree/main]
 
 ---
 
